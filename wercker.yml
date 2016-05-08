@@ -1,0 +1,28 @@
+box: ragnarula/sbt:0.13.11_0.1
+build:
+  steps:
+    - script:
+        name: Build distribution
+        code: sbt -Dsbt.ivy.home=$WERCKER_CACHE_DIR/ivy2/ -Divy.home=$WERCKER_CACHE_DIR/ivy2/ universal:packageBin
+
+    - script:
+        name: Extract Dist
+        code: unzip target/universal/anvil-tone-parser.zip
+
+    - script:
+        name: Copy files to out dir
+        code: mv anvil-tone-parser $WERCKER_OUTPUT_DIR/app
+
+deploy:
+    box: ragnarula/jdk:8u73-b02_0.1
+    hub:
+    - script:
+        name: Copy app in
+        code: cp -R $WERCKER_ROOT/app /app
+    - internal/docker-push:
+        username: $HUB_USER
+        password: $HUB_PASSWORD
+        tag: $WERCKER_GIT_COMMIT, latest
+        ports: "9000"
+        repository: anvilcity/tone-parser
+        entrypoint: /app/bin/anvil-tone-parser
