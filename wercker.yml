@@ -11,7 +11,7 @@ build:
 
     - script:
         name: Copy files to out dir
-        code: mv anvil-tone-parser $WERCKER_OUTPUT_DIR/app
+        code: mv anvil-tone-parser-1.0 $WERCKER_OUTPUT_DIR/app
 
 deploy:
     box: ragnarula/jdk:8u73-b02_0.1
