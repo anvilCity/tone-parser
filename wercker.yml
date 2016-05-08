@@ -7,7 +7,7 @@ build:
 
     - script:
         name: Extract Dist
-        code: unzip target/universal/anvil-tone-parser.zip
+        code: unzip target/universal/anvil-tone-parser-1.0.zip
 
     - script:
         name: Copy files to out dir
