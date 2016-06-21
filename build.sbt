@@ -17,4 +17,4 @@ libraryDependencies += "com.sksamuel.elastic4s" %% "elastic4s-streams" % "1.7.4"
 
 lazy val root = (project in file(".")).enablePlugins(UniversalPlugin).enablePlugins(JavaAppPackaging)
 mainClass in Compile := Some("Main")
-
+name in Universal := "dist"

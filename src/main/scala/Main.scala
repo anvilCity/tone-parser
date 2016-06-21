@@ -44,7 +44,7 @@ object Main extends App{
     s
   }
 
-  val esClient = ElasticClient.transport(ElasticsearchClientUri("elasticsearch://elastic:9300"))
+  val esClient = ElasticClient.transport(ElasticsearchClientUri("elasticsearch://192.168.99.100:9300"))
 
   import com.sksamuel.elastic4s.ElasticDsl._
   case class Message(campaign: String, tags: Seq[String], message: String)
